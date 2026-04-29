@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Arise: Patient Flow Model</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+<body>
+<div class="hud" id="hudToCapture">
+    <div class="topbar">
+        <div class="left-top">
+            <div class="clinic-title">🏥 RIVERSIDE CLINIC · HUD</div>
+            <button class="action-btn" id="exportPngBtn">📸 Export as PNG</button>
+            <button class="action-btn reports-btn" id="reportsBtn">📊 Reports</button>
+        </div>
+        <div class="right-top">
+            <div class="live-clock" id="liveClock">--:--</div>
+            <div class="alert-badge">1 overdue wait</div>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="expected-column">
+            <div class="expected-list"><h3>📋 Expected Today · Lobby</h3><div id="patientList"></div></div>
+        </div>
+        <div class="birdseye">
+            <div class="section-header"><h2>🪶 Bird's Eye View</h2>
+                <div class="legend"><span>◆ Clean</span><span>▲ In Progress</span><span>■ Ready</span><span>⚠ Wait</span><span>● Dirty</span><span>✦ Procedure</span></div>
+            </div>
+            <div id="roomsContainer"></div>
+        </div>
+        <div class="right-panel">
+            <div class="snapshot-card"><h3>📄 5‑Second Snapshot</h3><div id="snapshotContent">Select a room</div></div>
+        </div>
+    </div>
+</div>
+
+<div id="undoToast" class="toast hidden"><span>✅ Action completed</span><button id="undoBtn">↩️ Undo</button></div>
+
+<!-- Modal -->
+<div id="reportModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header"><h2>Operational Reports</h2><button class="close-modal" id="closeModalBtn">&times;</button></div>
+        <div class="report-section">
+            <h3>Weekly Summary (last 7 days)</h3>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+        <div class="report-section">
+            <h3>Per‑Room Latency (avg minutes)</h3>
+            <table id="roomLatencyTable"><thead><tr><th>Room</th><th>Avg Wait (min)</th><th>Avg Clean Time (min)</th></tr></thead><tbody></tbody></table>
+        </div>
+        <div class="report-section">
+            <h3>Export Data</h3>
+            <button class="export-csv-btn" id="exportDailyCSV">📥 Download Daily Flow CSV (last 7 days)</button>
+            <button class="export-csv-btn" id="exportWeeklyCSV" style="margin-left:12px;">📊 Download Weekly Summary CSV</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
