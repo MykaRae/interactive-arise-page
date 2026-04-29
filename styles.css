@@ -131,6 +131,14 @@
             font-weight: 500;
             color: white;
         }
+        .patient-name {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #FFFFFF;     /* was #D6EAF8 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
         .checkin-btn {
             background: #0072B2;
             border: none;
