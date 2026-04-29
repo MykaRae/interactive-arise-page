@@ -256,6 +256,11 @@
             color: #D6EAF8;
             margin-bottom: 12px;
         }
+.snapshot-detail {
+    color: #E6F3FF;
+    margin: 12px 0;
+    line-height: 1.4;
+}
         .vital-badge {
             background: #1E2F3F;
             padding: 6px 12px;
