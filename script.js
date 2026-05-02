@@ -163,7 +163,7 @@
         if (!rec) return '<div class="ehr-section">No EHR data available for this patient.</div>';
         return `
             <div class="ehr-section">
-                <div class="ehr-title">📋 EHR Summary (athenahealth integration)</div>
+                <div class="ehr-title">EHR Summary (athenahealth integration)</div>
                 <ul class="ehr-list">
                     <li><strong>Allergies:</strong> ${rec.allergies.join(', ') || 'None'}</li>
                     <li><strong>Current Medications:</strong> ${rec.medications.join(', ')}</li>
@@ -206,13 +206,13 @@
             return;
         }
         if (room.status === 'dirty') {
-            snap.innerHTML = `<div class="snapshot-detail">🧹 Room ${room.name} is dirty.</div>
+            snap.innerHTML = `<div class="snapshot-detail">Room ${room.name} is dirty.</div>
                 <div class="action-buttons">
                     <select id="statusSelect" class="status-dropdown">
                         ${statusList.map(s => `<option value="${s}" ${room.status === s ? 'selected' : ''}>${statusDisplayNames[s]}</option>`).join('')}
                     </select>
                     <button class="btn-secondary" id="applyStatusBtn">Apply</button>
-                    <button class="btn-clean" id="markCleanBtn">✨ Mark Clean/Ready</button>
+                    <button class="btn-clean" id="markCleanBtn">Mark Clean/Ready</button>
                 </div>`;
             const applyBtn = document.getElementById('applyStatusBtn');
             if (applyBtn) applyBtn.onclick = () => {
@@ -233,16 +233,16 @@
         // Add "View Full Chart" button
         snap.innerHTML = `${alertMsg}
             <div><strong>${p.name}</strong> · ${p.age} yrs</div>
-            <div>📋 Chief Complaint: ${p.complaint}</div>
-            <div><span class="vital-badge ${highBp}">❤️ BP: ${p.bp}</span><span class="vital-badge">🌡️ Temp: ${p.temp}°F</span></div>
+            <div>Chief Complaint: ${p.complaint}</div>
+            <div><span class="vital-badge ${highBp}">BP: ${p.bp}</span><span class="vital-badge">Temp: ${p.temp}°F</span></div>
             ${ehrHtml}
             <div class="action-buttons">
-                <button class="btn-chart" id="viewChartBtn">📋 View Full Chart</button>
+                <button class="btn-chart" id="viewChartBtn">View Full Chart</button>
                 <select id="statusSelect" class="status-dropdown">
                     ${statusList.map(s => `<option value="${s}" ${room.status === s ? 'selected' : ''}>${statusDisplayNames[s]}</option>`).join('')}
                 </select>
                 <button class="btn-secondary" id="applyStatusBtn">Apply</button>
-                <button class="btn-primary" id="readyBtn" ${room.status === 'ready' ? 'disabled' : ''}>✅ Ready for Doctor</button>
+                <button class="btn-primary" id="readyBtn" ${room.status === 'ready' ? 'disabled' : ''}>Ready for Doctor</button>
                 <button class="btn-secondary" id="dirtyBtn">🧹 Mark Dirty</button>
             </div>`;
         const chartBtn = document.getElementById('viewChartBtn');
