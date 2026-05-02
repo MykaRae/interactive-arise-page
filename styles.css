@@ -71,7 +71,7 @@
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
         .section-header h2 { font-size: 1.3rem; color: white; background: #0F2C44; padding: 4px 14px; border-radius: 26px; }
         .legend { display: flex; gap: 10px; font-size: 1rem; background: #07121E; padding: 10px 10px; border-radius: 48px; color: #B9D9F0; flex-wrap: wrap; }
-        .legend span { display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; }
+        .legend span { display: inline-flex; align-items: center; gap: 8px; font-size: .65rem; }
         .status-group { margin-bottom: 28px; }
         .group-title { font-size: 0.9rem; text-transform: uppercase; color: #7F9FBF; margin-bottom: 12px; border-left: 3px solid #56B4E9; padding-left: 8px; }
         .rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
