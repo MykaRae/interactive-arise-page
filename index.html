@@ -1,23 +1,48 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>ARISE: Patient Flow Model</title>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>ARISE: Patient Flow Model</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/images/arise.ico">
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+ </head>
+
 <body>
+
 <div class="hud" id="hudToCapture">
-    <div class="topbar">
-        <div class="left-top">
-            <div class="clinic-title">RIVERSIDE CLINIC · HUD</div>
-            <button class="action-btn" id="exportPngBtn">Export as PNG</button>
-            <button class="action-btn reports-btn" id="reportsBtn">Reports</button>
-        </div>
-        <div class="right-top">
-            <div class="live-clock" id="liveClock">--:--</div>
-        </div>
-    </div>
+
+    <div class="topbar">
+
+        <div class="left-top">
+
+            <img class="top-left-logo" src="assets/images/ariseLogo.png" alt="ARISE logo">
+
+            <div class="clinic-title">RIVERSIDE CLINIC · HUD</div>
+
+            <button class="action-btn" id="exportPngBtn">Export as PNG</button>
+
+            <button class="action-btn reports-btn" id="reportsBtn">Reports</button>
+
+        </div>
+
+        <div class="right-top">
+
+            <div class="live-clock" id="liveClock">--:--</div>
+
+        </div>
+
+    </div>
 
     <div class="dashboard">
         <!-- LEFT: Lobby sections with new distinct patient names -->
