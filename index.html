@@ -72,17 +72,19 @@
         <!-- RIGHT: Snapshot + EHR + Chart Link -->
         <div class="right-panel">
             <div class="snapshot-card">
-                <h3>5‑Second Snapshot + EHR Summary</h3>
-                <div id="snapshotContent">Select a room to view patient data</div>
+                <h3>Patient Snapshot + Vitals</h3>
+                <div id="snapshotContent">Select a room</div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="topToast" class="toast-top hidden"><span>✅ Action completed</span><button id="undoBtnTop">↩️ Undo</button></div>
-<div id="reportModal" class="modal"><div class="modal-content"><div class="modal-header"><h2>Operational Reports</h2><button class="close-modal" id="closeModalBtn">&times;</button></div>
-    <div class="report-section"><h3>Weekly Summary</h3><div class="stats-grid" id="statsGrid"></div></div>
-    <div class="report-section"><h3>Export</h3><button class="export-csv-btn" id="exportDailyCSV">📥 Daily Flow CSV</button></div>
+<div id="topToast" class="toast-top hidden"><span></span><button id="undoBtnTop">Undo</button></div>
+<div id="walkinModal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Add Walk-In Patient</h3><button class="close-modal" id="closeWalkinModal">&times;</button></div>
+    <input type="text" id="walkinName" placeholder="Full Name">
+    <input type="date" id="walkinDOB" placeholder="Date of Birth">
+    <input type="text" id="walkinReason" placeholder="Reason for visit">
+    <button id="confirmWalkin" class="action-btn" style="width:100%;">Add & Check In</button>
 </div></div>
 <script src="script.js" defer></script>
 </body>
