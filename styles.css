@@ -16,17 +16,7 @@
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
             overflow: hidden;
         }
-        .top-left-logo {
         
-            width: 42px;
-        
-            height: 42px;
-        
-            object-fit: contain;
-        
-            display: block;
-        
-        }
         .topbar {
             background: #07121E;
             padding: 14px 28px;
@@ -38,6 +28,18 @@
             gap: 12px;
         }
         .left-top { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+        .top-left-logo {
+                
+                    width: 42px;
+                
+                    height: 42px;
+                
+                    object-fit: contain;
+                
+                    display: block;
+                
+                }
         .clinic-title {
             font-weight: 600;
             font-size: 1.25rem;
