@@ -28,7 +28,7 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-        .left-top { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .left-top { display: flex; align-items: center; justify-content: start; gap: 20px; flex-wrap: wrap; }
         .clinic-title {
             font-weight: 600;
             font-size: 1.25rem;
@@ -88,7 +88,7 @@
             cursor: pointer;
             font-size: 0.75rem;
         }
-        .walkin-btn { background: #E69F00; color: #0D1B2A; margin-top: 12px; width: 100%; }
+        .walkin-btn {  margin-top: 12px; width: 100%; }
         .room-btn { background: #009E73; }
         .insurance-badge { font-size: 0.7rem; background: #1E2F3F; padding: 2px 8px; border-radius: 20px; color: #FFB700; }
 
