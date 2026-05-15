@@ -1,93 +1,58 @@
 <!-- @format -->
 
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<title>ARISE: Patient Flow Model</title>
-		<link rel="icon" type="image/x-icon" href="assets/images/arise.ico" />
-		<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-		<link rel="stylesheet" href="styles.css" />
-	</head>
-	<body>
-		<div class="hud" id="hudToCapture">
-			<div class="topbar">
-				<div class="left-top">
-					<img
-						class="top-left-logo"
-						src="assets/images/ariseLogo.png"
-						alt="ARISE logo" />
-					<div class="clinic-title">RIVERSIDE CLINIC · HUD</div>
-					<button class="action-btn" id="exportPngBtn">Export as PNG</button>
-					<button class="action-btn reports-btn" id="reportsBtn">
-						Reports
-					</button>
-				</div>
-				<div class="right-top">
-					<div class="live-clock" id="liveClock">--:--</div>
-				</div>
-			</div>
-
-			<div class="dashboard">
-				<!-- LEFT: Lobby sections with new distinct patient names -->
-				<div class="expected-column">
-					<div class="lobby-section">
-						<h3>Scheduled Arrivals (Not Checked In)</h3>
-						<div id="notCheckedInList"></div>
-					</div>
-					<div class="lobby-section">
-						<h3>Ready for Rooming (Checked In)</h3>
-						<div id="checkedInWaitingList"></div>
-					</div>
-				</div>
-
-				<!-- MIDDLE: Rooms (existing patients remain) -->
-				<div class="birdseye">
-					<div class="section-header">
-						<h2>Rooms</h2>
-						<div class="legend">
-							<span>◆ Clean/Ready</span> <span>▲ In Progress</span>
-							<span>■ Ready for MD</span> <span>● Dirty</span>
-							<span>✦ Procedure</span>
-						</div>
-					</div>
-					<div id="roomsContainer"></div>
-				</div>
-
-				<!-- RIGHT: Snapshot + EHR + Chart Link -->
-				<div class="right-panel">
-					<div class="snapshot-card">
-						<h3>5‑Second Snapshot + EHR Summary</h3>
-						<div id="snapshotContent">Select a room to view patient data</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="topToast" class="toast-top hidden">
-			<span>✅ Action completed</span><button id="undoBtnTop">↩️ Undo</button>
-		</div>
-		<div id="reportModal" class="modal">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2>Operational Reports</h2>
-					<button class="close-modal" id="closeModalBtn">&times;</button>
-				</div>
-				<div class="report-section">
-					<h3>Weekly Summary</h3>
-					<div class="stats-grid" id="statsGrid"></div>
-				</div>
-				<div class="report-section">
-					<h3>Export</h3>
-					<button class="export-csv-btn" id="exportDailyCSV">
-						📥 Daily Flow CSV
-					</button>
-				</div>
-			</div>
-		</div>
-		<script src="script.js" defer></script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ARISE: Patient Flow Model</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/arise.ico">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+ </head>
+<body>
+<div class="hud" id="hudToCapture">
+    <div class="topbar">
+       <div class="left-top">
+            <img class="top-left-logo" src="assets/images/ariseLogo.png" alt="ARISE logo">
+            <div class="clinic-title">RIVERSIDE CLINIC  HUD</div>
+            <button class="action-btn" id="exportPngBtn">Export PNG</button>
+            <button class="action-btn reports-btn" id="reportsBtn">Reports</button>
+        </div>
+        <div class="right-top"><div class="live-clock" id="liveClock">--:--</div></div>
+    </div>
+    <div class="dashboard">
+        <div class="expected-column">
+            <div class="lobby-section">
+                <h3>Scheduled Arrivals (Not Checked In)</h3>
+                <div id="notCheckedInList"></div>
+                <button class="walkin-btn" id="walkinBtn">+ Add Walk-In Patient</button>
+            </div>
+            <div class="lobby-section">
+                <h3>Ready for Rooming (Checked In)</h3>
+                <div id="checkedInWaitingList"></div>
+            </div>
+        </div>
+        <div class="birdseye">
+            <div class="section-header">
+                <h2>Rooms</h2>
+                <div class="legend"><span>◆ Clean</span><span>▲ In Progress</span><span>■ Ready for MD</span><span>● Dirty</span><span>✦ Procedure</span></div>
+            </div>
+            <div id="roomsContainer"></div>
+        </div>
+        <div class="right-panel">
+            <div class="snapshot-card"><h3>Patient Snapshot + Vitals</h3><div id="snapshotContent">Select a room</div></div>
+        </div>
+    </div>
+</div>
+<div id="topToast" class="toast-top hidden"><span></span><button id="undoBtnTop">Undo</button></div>
+<div id="walkinModal" class="modal"><div class="modal-content"><div class="modal-header"><h3>Add Walk-In Patient</h3><button class="close-modal" id="closeWalkinModal">&times;</button></div>
+    <input type="text" id="walkinName" placeholder="Full Name">
+    <input type="date" id="walkinDOB" placeholder="Date of Birth">
+    <input type="text" id="walkinReason" placeholder="Reason for visit">
+    <button id="confirmWalkin" class="action-btn" style="width:100%;">Add & Check In</button>
+</div></div>
+<script src="script.js" defer></script>
+</body>
 </html>
