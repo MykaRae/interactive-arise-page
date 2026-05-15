@@ -38,6 +38,9 @@
 						<h3>Scheduled Arrivals (Not Checked In)</h3>
 						<div id="notCheckedInList"></div>
 					</div>
+					<button class="walkin-btn" id="walkinBtn">
+						+ Add Walk-In Patient
+					</button>
 					<div class="lobby-section">
 						<h3>Ready for Rooming (Checked In)</h3>
 						<div id="checkedInWaitingList"></div>
@@ -49,9 +52,9 @@
 					<div class="section-header">
 						<h2>Rooms</h2>
 						<div class="legend">
-							<span>◆ Clean/Ready</span> <span>▲ In Progress</span>
-							<span>■ Ready for MD</span> <span>● Dirty</span>
-							<span>✦ Procedure</span>
+							<span>◆ Clean</span><span>▲ In Progress</span
+							><span>■ Ready for MD</span><span>● Dirty</span
+							><span>✦ Procedure</span>
 						</div>
 					</div>
 					<div id="roomsContainer"></div>
@@ -60,8 +63,8 @@
 				<!-- RIGHT: Snapshot + EHR + Chart Link -->
 				<div class="right-panel">
 					<div class="snapshot-card">
-						<h3>5‑Second Snapshot + EHR Summary</h3>
-						<div id="snapshotContent">Select a room to view patient data</div>
+						<h3>Patient Snapshot + Vitals</h3>
+						<div id="snapshotContent">Select a room</div>
 					</div>
 				</div>
 			</div>
