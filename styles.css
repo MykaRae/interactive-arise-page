@@ -28,20 +28,34 @@ body {
 .topbar {
 	background: #07121e;
 	padding: 14px 28px;
-	display: flex;
+	display: grid;
+	grid-template-columns: minmax(280px, 1.3fr) minmax(480px, 2.2fr) minmax(
+			360px,
+			1.5fr
+		);
 	align-items: center;
-	gap: 12px;
+	column-gap: 12px;
 	border-bottom: 1px solid #1e3a5f;
+}
+
+.top-left-logo {
+	width: 42px;
+	height: 42px;
+	object-fit: contain;
+	display: block;
+	justify-self: start;
 }
 
 .left-top {
 	display: flex;
 	gap: 20px;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	flex: 1;
-	min-width: 0;
+	justify-self: start;
+	width: max-content;
+	/* nudge the control group slightly left to align with center column */
+	margin-left: -12px;
 }
 
 .clinic-title {
@@ -53,14 +67,6 @@ body {
 	border-radius: 60px;
 	border-left: 3px solid #56b4e9;
 }
-
-.top-left-logo {
-	width: 42px;
-	height: 42px;
-	object-fit: contain;
-	display: block;
-}
-
 .action-btn {
 	background: #2c5f2d;
 	border: none;
@@ -88,7 +94,7 @@ body {
 	display: flex;
 	gap: 20px;
 	align-items: center;
-	margin-left: auto;
+	justify-self: end;
 }
 
 .live-clock {
@@ -104,20 +110,25 @@ body {
 
 @media (max-width: 900px) {
 	.topbar {
-		flex-direction: column;
-		align-items: center;
+		grid-template-columns: 1fr;
+		justify-items: center;
 		row-gap: 12px;
 	}
 
 	.top-left-logo,
 	.left-top,
 	.right-top {
-		margin-left: 0;
+		justify-self: center;
+	}
+
+	.top-left-logo {
+		justify-self: center;
 	}
 
 	.left-top {
 		width: auto;
-		flex: 0 1 auto;
+		max-width: 100%;
+		margin-left: 0; /* reset on small screens */
 	}
 }
 
