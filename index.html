@@ -12,6 +12,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
+
 	<body>
 		<div class="hud" id="hudToCapture">
 			<div class="topbar">
@@ -31,6 +32,7 @@
 					<div class="live-clock" id="liveClock">--:--</div>
 				</div>
 			</div>
+
 			<div class="dashboard">
 				<div class="expected-column">
 					<div class="lobby-section">
@@ -45,6 +47,7 @@
 						<div id="checkedInWaitingList"></div>
 					</div>
 				</div>
+
 				<div class="birdseye">
 					<div class="section-header">
 						<h2>Rooms</h2>
@@ -56,6 +59,7 @@
 					</div>
 					<div id="roomsContainer"></div>
 				</div>
+
 				<div class="right-panel">
 					<div class="snapshot-card">
 						<h3>Patient Snapshot + Vitals</h3>
@@ -64,15 +68,18 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="topToast" class="toast-top hidden">
 			<span></span><button id="undoBtnTop">Undo</button>
 		</div>
+
 		<div id="walkinModal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h3>Add Walk-In Patient</h3>
 					<button class="close-modal" id="closeWalkinModal">&times;</button>
 				</div>
+
 				<input type="text" id="walkinName" placeholder="Full Name" />
 				<input type="date" id="walkinDOB" placeholder="Date of Birth" />
 				<input type="text" id="walkinReason" placeholder="Reason for visit" />
@@ -81,6 +88,7 @@
 				</button>
 			</div>
 		</div>
+
 		<script src="script.js" defer></script>
 	</body>
 </html>

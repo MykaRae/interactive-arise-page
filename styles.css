@@ -86,6 +86,17 @@ body {
 	filter: brightness(1.1);
 }
 
+.action-btn:active {
+	filter: brightness(0.8);
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.action-btn:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
 .reports-btn {
 	background: #0072b2;
 }
@@ -206,11 +217,32 @@ body {
 }
 
 .room-btn {
-	background: #009e73;
+	background: #007a5a;
+}
+
+.checkin-btn:hover,
+.room-btn:hover,
+.walkin-btn:hover {
+	filter: brightness(1.15);
+}
+
+.checkin-btn:active,
+.room-btn:active,
+.walkin-btn:active {
+	filter: brightness(0.8);
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.checkin-btn:focus-visible,
+.room-btn:focus-visible,
+.walkin-btn:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
 }
 
 .insurance-badge {
-	font-size: 0.7rem;
+	font-size: 0.9rem;
 	background: #1e2f3f;
 	padding: 2px 8px;
 	border-radius: 20px;
@@ -392,19 +424,8 @@ body {
 	font-weight: 600;
 }
 
-.snapshot-card,
-.snapshot-card * {
-	color: #ffffff !important;
-}
-
-.vital-badge {
-	background: #1e2f3f;
-	padding: 6px 12px;
-	border-radius: 40px;
-	display: inline-block;
-	font-size: 0.8rem;
-	margin-right: 8px;
-	font-weight: 500;
+.snapshot-card {
+	color: #ffffff;
 }
 
 .high-bp {
@@ -451,15 +472,84 @@ body {
 
 .btn-primary {
 	background: #0072b2;
+	color: white;
+}
+
+.btn-primary:hover {
+	background: #0086d1;
+}
+
+.btn-primary:active {
+	background: #004f7c;
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.btn-primary:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
 }
 
 .btn-secondary {
 	background: #2c3e50;
+	color: white;
 	border: 1px solid #4da6ff;
 }
 
+.btn-secondary:hover {
+	background: #3a5068;
+}
+
+.btn-secondary:active {
+	background: #1a2535;
+	border-color: #ffb700;
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.btn-secondary:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
 .btn-clean {
+	background: #007a5a;
+	color: white;
+}
+
+.btn-clean:hover {
 	background: #009e73;
+}
+
+.btn-clean:active {
+	background: #005940;
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.btn-clean:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.btn-chart {
+	background: #5a2d82;
+	color: white;
+}
+
+.btn-chart:hover {
+	background: #6f38a0;
+}
+
+.btn-chart:active {
+	background: #3b1a57;
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.btn-chart:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
 }
 
 .chart-link {
@@ -517,6 +607,17 @@ button {
 
 .keypad-btn:hover {
 	background: #0072b2;
+}
+
+.keypad-btn:active {
+	background: #004f7c;
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
+}
+
+.keypad-btn:focus-visible {
+	outline: 3px solid #ffb700;
+	outline-offset: 2px;
 }
 
 .vital-input-row {
@@ -592,6 +693,7 @@ button {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 20px;
+	color: #fff;
 }
 
 .close-modal {
