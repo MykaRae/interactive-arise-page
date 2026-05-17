@@ -679,6 +679,51 @@ button {
 	z-index: 2000;
 	justify-content: center;
 	align-items: center;
+	color: white;
+}
+
+/* Modal background stays dark, but text inside is white */
+.modal-content {
+    background: #0D1B2A;
+    border: 1px solid #56B4E9;
+}
+
+/* Headers get a slightly warmer accent but still bright */
+.modal-header h2 {
+    color: #56B4E9 !important;
+}
+
+/* Section headers (e.g., "Weekly Summary") */
+.report-section h3 {
+    color: #FFB700 !important;
+}
+
+/* Stat card numbers and labels */
+.stat-card .stat-number {
+    color: #56B4E9 !important;
+}
+.stat-card .stat-label {
+    color: #E0F2FE !important;
+}
+
+/* Table headers and cells */
+#roomLatencyTable th {
+    background: #0A2A44;
+    color: white !important;
+}
+#roomLatencyTable td {
+    color: #FFFFFF !important;
+    border-color: #1E3A5F;
+}
+
+.export-csv-btn {
+    background: #2C5F2D;
+    color: white !important;
+    border: none;
+}
+
+.export-csv-btn:hover {
+    filter: brightness(1.1);
 }
 
 .modal-content {
@@ -697,7 +742,7 @@ button {
 }
 
 .close-modal {
-	background: none;
+	background: transparent;
 	border: none;
 	font-size: 1.8rem;
 	cursor: pointer;
