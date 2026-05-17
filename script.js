@@ -782,9 +782,96 @@ renderAll();
 if (rooms.find((r) => r.status === "in-progress"))
 	showSnapshot(rooms.find((r) => r.status === "in-progress"));
 
-// Placeholder handler for the Reports button.
-document.getElementById("reportsBtn").onclick = () =>
-	alert("Reports: Daily CSV export would be available here.");
+// ----- REPORTS MODAL AND CSV EXPORT (FIXED) -----
+const modal = document.getElementById('reportModal');
+const reportsBtn = document.getElementById('reportsBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Open modal and generate sample data
+if (reportsBtn) {
+    reportsBtn.onclick = () => {
+        if (modal) {
+            modal.style.display = 'flex';
+            generateReportData();  // fills the modal with sample stats
+        } else {
+            console.error("Modal element not found");
+        }
+    };
+}
+
+// Close modal when clicking X
+if (closeModalBtn) {
+    closeModalBtn.onclick = () => {
+        if (modal) modal.style.display = 'none';
+    };
+}
+
+// Close modal when clicking outside the modal content
+window.onclick = (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+};
+
+// Function to populate modal with sample data
+function generateReportData() {
+    // Update stats grid
+    const statsGrid = document.getElementById('statsGrid');
+    if (statsGrid) {
+        statsGrid.innerHTML = `
+            <div class="stat-card"><div class="stat-number">142</div><div class="stat-label">Patients Seen (7d)</div></div>
+            <div class="stat-card"><div class="stat-number">12.4</div><div class="stat-label">Avg Wait Time (min)</div></div>
+            <div class="stat-card"><div class="stat-number">68%</div><div class="stat-label">Clinic Health</div></div>
+        `;
+    }
+
+    // Update room latency table (optional)
+    const latencyTable = document.querySelector('#roomLatencyTable tbody');
+    if (latencyTable) {
+        latencyTable.innerHTML = `
+            <tr><td>Exam 1</td><td>8.2 min</td><td>3.5 min</td></tr>
+            <tr><td>Exam 2</td><td>15.7 min</td><td>5.2 min</td></tr>
+            <tr><td>Exam 3</td><td>10.1 min</td><td>4.0 min</td></tr>
+        `;
+    }
+
+    // Re-attach CSV export button events (they might have been overwritten)
+    const dailyBtn = document.getElementById('exportDailyCSV');
+    const weeklyBtn = document.getElementById('exportWeeklyCSV');
+    if (dailyBtn) {
+        dailyBtn.onclick = () => exportDailyCSV();
+    }
+    if (weeklyBtn) {
+        weeklyBtn.onclick = () => exportWeeklyCSV();
+    }
+}
+
+// CSV export functions
+function exportDailyCSV() {
+    const csvRows = [
+        ["Date", "Total Patients", "Avg Wait (min)"],
+        ["2025-05-01", "22", "12.3"],
+        ["2025-05-02", "18", "11.8"],
+        ["2025-05-03", "25", "13.2"]
+    ];
+    const csvContent = csvRows.map(row => row.join(",")).join("\n");
+    downloadCSV(csvContent, "daily_flow_report.csv");
+}
+
+function exportWeeklyCSV() {
+    const csvContent = "Metric,Value\nPatients Seen (7d),142\nAvg Wait Time (min),12.4\nClinic Health (%),68";
+    downloadCSV(csvContent, "weekly_summary.csv");
+}
+
+function downloadCSV(content, filename) {
+    const blob = new Blob([content], { type: "text/csv" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
 
 // Captures the entire HUD as a PNG image and triggers a download.
 document.getElementById("exportPngBtn").addEventListener("click", function () {
