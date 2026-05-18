@@ -227,13 +227,26 @@ function renderLobbySections() {
 		.querySelectorAll("#checkedInWaitingList .patient-row")
 		.forEach((el) => {
 			el.setAttribute("draggable", "true");
+			el.setAttribute("tabindex", "0");
+
+			// Provide a visual clue while dragging and store the patient id.
 			el.addEventListener("dragstart", (e) => {
-				// Store the patient's ID in the drag event so the drop target knows who is being moved.
 				e.dataTransfer.setData(
 					"text/plain",
 					el.getAttribute("data-patient-id"),
 				);
 				e.dataTransfer.effectAllowed = "move";
+				el.classList.add("dragging");
+			});
+
+			// Cleanup visual state when drag ends (success or cancel).
+			el.addEventListener("dragend", () => el.classList.remove("dragging"));
+
+			// Also support keyboard users to focus the item (Enter to show a quick hint).
+			el.addEventListener("keydown", (ev) => {
+				if (ev.key === "Enter") {
+					showToast("Tip: drag this patient onto a clean room card to assign.");
+				}
 			});
 		});
 
@@ -304,29 +317,67 @@ function renderGroupedRooms() {
 			// Clicking a card opens the patient detail panel on the right.
 			card.addEventListener("click", () => showSnapshot(room));
 
-			// Allow patient cards to be dragged over this room.
-			card.addEventListener("dragover", (e) => {
+			// Allow patient cards to be dragged over this room and provide clearer
+			// accept/reject feedback. We accept drops onto CLEAN rooms and also
+			// onto READY rooms (with a warning) so staff can move patients when
+			// needed.
+			const acceptDrop = (patientId) => {
+				// If no patient identified yet, fall back to status check only.
+				if (!patientId) return room.status === "clean" || room.status === "ready";
+				const patient = checkedInWaiting.find((p) => p.id === patientId);
+				return !!patient && (room.status === "clean" || room.status === "ready");
+			};
+
+			card.addEventListener("dragenter", (e) => {
 				e.preventDefault();
-				e.dataTransfer.dropEffect = "move";
-				card.classList.add("drag-over");
+				const pid = e.dataTransfer.getData("text/plain");
+				if (acceptDrop(pid)) {
+					card.classList.add("drag-over-accept");
+					card.classList.remove("drag-over-reject");
+					e.dataTransfer.dropEffect = "move";
+				} else {
+					card.classList.add("drag-over-reject");
+					card.classList.remove("drag-over-accept");
+					e.dataTransfer.dropEffect = "none";
+				}
 			});
 
-			// Remove the drag highlight when the user moves their cursor away.
-			card.addEventListener("dragleave", () =>
-				card.classList.remove("drag-over"),
-			);
+			card.addEventListener("dragover", (e) => {
+				// Only allow the browser to drop if this room is a valid target.
+				const pid = e.dataTransfer.getData("text/plain");
+				if (acceptDrop(pid)) {
+					e.preventDefault();
+					e.dataTransfer.dropEffect = "move";
+				} else {
+					// Let it pass but do not preventDefault so the UI shows rejected.
+				}
+			});
+
+			// Remove any drag classes when leaving.
+			card.addEventListener("dragleave", () => {
+				card.classList.remove("drag-over-accept", "drag-over-reject");
+			});
 
 			// Handle a patient being dropped onto this room.
 			card.addEventListener("drop", (e) => {
 				e.preventDefault();
-				card.classList.remove("drag-over");
+				card.classList.remove("drag-over-accept", "drag-over-reject");
 
 				// Find out which patient was dragged from the waiting list.
 				const patientId = e.dataTransfer.getData("text/plain");
 				const patient = checkedInWaiting.find((p) => p.id === patientId);
 
-				// Only allow the drop if the room is clean and the patient is valid.
-				if (patient && room.status === "clean") {
+				if (!patient) {
+					showToast("Invalid patient or drag source");
+					return;
+				}
+
+				// Only allow the drop if the room is clean or ready.
+				if (room.status === "clean" || room.status === "ready") {
+					// If assigning to a READY room, warn the user but allow it.
+					if (room.status === "ready")
+						showToast(`Warning: assigning to ${room.name} which is Ready for MD`);
+
 					// Mark the room as in-progress and assign the patient to it.
 					room.status = "in-progress";
 					room.patient = {
@@ -354,7 +405,9 @@ function renderGroupedRooms() {
 					};
 					renderAll();
 					showSnapshot(room);
-				} else showToast("Room not clean or patient invalid");
+				} else {
+					showToast("Room not available for assignment");
+				}
 			});
 
 			// Show an alert banner if the doctor has been kept waiting too long.

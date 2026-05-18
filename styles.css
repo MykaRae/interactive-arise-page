@@ -327,6 +327,21 @@ body {
 	background: #1a2a3a;
 }
 
+.room-card.drag-over-accept {
+	border: 3px dashed #00c48c;
+	background: linear-gradient(180deg, #0f2a22, #112b2a);
+}
+
+.room-card.drag-over-reject {
+	border: 3px dashed #d9534f;
+	background: linear-gradient(180deg, #2a0f0f, #2b1212);
+}
+
+.patient-row.dragging {
+	opacity: 0.6;
+	transform: scale(0.995);
+}
+
 .room-card:hover {
 	background: #0b1a2c;
 	border-color: #4da6ff;
