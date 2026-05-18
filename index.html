@@ -11,6 +11,14 @@
 		<link rel="icon" type="image/x-icon" href="assets/images/arise.ico" />
 		<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 		<link rel="stylesheet" href="styles.css" />
+		<style>
+			#exportWeeklyCSV {
+				margin-left: 12px;
+			}
+			#confirmWalkin {
+				width: 100%;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -83,35 +91,45 @@
 				<input type="text" id="walkinName" placeholder="Full Name" />
 				<input type="date" id="walkinDOB" placeholder="Date of Birth" />
 				<input type="text" id="walkinReason" placeholder="Reason for visit" />
-				<button id="confirmWalkin" class="action-btn" style="width: 100%">
+				<button id="confirmWalkin" class="action-btn" type="button">
 					Add & Check In
 				</button>
 			</div>
 		</div>
 		<div id="reportModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Operational Reports</h2>
-            <button class="close-modal" id="closeModalBtn">&times;</button>
-        </div>
-        <div class="report-section">
-            <h3>Weekly Summary</h3>
-            <div class="stats-grid" id="statsGrid"></div>
-        </div>
-        <div class="report-section">
-            <h3>Per‑Room Latency</h3>
-            <table id="roomLatencyTable">
-                <thead><tr><th>Room</th><th>Avg Wait</th><th>Avg Clean Time</th></tr></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="report-section">
-            <h3>Export Data</h3>
-            <button class="export-csv-btn" id="exportDailyCSV">Download Daily CSV</button>
-            <button class="export-csv-btn" id="exportWeeklyCSV" style="margin-left:12px;">Download Weekly CSV</button>
-        </div>
-    </div>
-</div>
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2>Operational Reports</h2>
+					<button class="close-modal" id="closeModalBtn">&times;</button>
+				</div>
+				<div class="report-section">
+					<h3>Weekly Summary</h3>
+					<div class="stats-grid" id="statsGrid"></div>
+				</div>
+				<div class="report-section">
+					<h3>Per‑Room Latency</h3>
+					<table id="roomLatencyTable">
+						<thead>
+							<tr>
+								<th>Room</th>
+								<th>Avg Wait</th>
+								<th>Avg Clean Time</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+				<div class="report-section">
+					<h3>Export Data</h3>
+					<button class="export-csv-btn" id="exportDailyCSV">
+						Download Daily CSV
+					</button>
+					<button class="export-csv-btn" id="exportWeeklyCSV" type="button">
+						Download Weekly CSV
+					</button>
+				</div>
+			</div>
+		</div>
 
 		<script src="script.js" defer></script>
 	</body>
