@@ -1,4 +1,5 @@
 Project Proposal:
+https://github.com/MykaRae/interactive-arise-page/blob/main/assets/TeamMorales-FinalProposal.pdf
 
    
    git clone <https://github.com/your-username/interactive-arise-page.git>
@@ -14,7 +15,7 @@ Project Proposal:
 ## 📂 Project Structure
 
 ```text
-├── assets/          # Images, icons, and fonts
+├── assets/          # Images, icons, and fonts, proposal pdf
 ├── css/             # Stylesheets
 ├── js/              # JavaScript logic
 └── index.html       # Main entry point
